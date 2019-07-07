@@ -1,2 +1,4 @@
-# blog
-我的博客
+# Wellcome to Pinger's blog
+### Demo1.[简单表单练习](form.html)
+### Demo2.[简单静态页面(一)](task1.html)
+### Demo3.[简单表格](task2.html)
