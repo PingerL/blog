@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>表格练习+CSS</title>
+  <style>
+      .layout {
+  width: 600px;
+  margin: 0 auto;
+}
+.f-table {
+   border-collapse: collapse;
+   border-spacing: 0;
+   width: 100%;
+   margin-bottom: 50px;
+   border: 1px solid #ccc;
+}
+.f-table th{
+  background-color:#4caf50;
+  padding: 8px;
+  color: white;
+  
+}
+.f-table td{
+  padding: 8px;
+}
+.f-table tr:nth-child(even) {
+  background-color: #f1f1f1;
+  
+}
+.f-table tr{
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.f-table.v1 th {
+  background-color: transparent;
+  color: black;
+}
+.f-table.v1{
+  border: none;
+}
+  </style>
+</head>
+<body>
+  <div class="layout">
+      <table class="f-table">
+    <tr>
+      <th>First Name</th>
+      <th>Laste Name</th>
+      <th>Points</th>
+    </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Adam</td>
+    <td>Johnson</td>
+    <td>67</td>
+  </tr>
+  <tr>
+    <td>Bo</td>
+    <td>Nilsson</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Mike</td>
+    <td>Ross</td>
+    <td>35</td>
+  </tr>
+  </table>
+<table class="f-table v1">
+    <tr>
+      <th>First Name</th>
+      <th>Laste Name</th>
+      <th>Points</th>
+    </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Adam</td>
+    <td>Johnson</td>
+    <td>67</td>
+  </tr>
+  <tr>
+    <td>Bo</td>
+    <td>Nilsson</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Mike</td>
+    <td>Ross</td>
+    <td>35</td>
+  </tr>
+  </table>
+  </div>
+</body>
+</html>
