@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .layout {
+            width: 600px;
+            margin: 0 auto;     
+        }
+        .box {
+            padding: 8px 10px;
+            display: inline-block;
+            border-radius: 5px;
+            transition: all .3s;
+        }
+        .box:hover {
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            cursor: pointer;
+        }
+        .box.steal {
+            background-color: #009688;
+            color: white;
+        }
+        .box.yellow {
+            background-color: yellow;
+        }
+        .box.orange {
+            background-color: orange;
+        }
+        .box.red {
+            background-color: red;
+            color: white;
+        }
+        .box.green {
+            background-color: green;
+            color: white;
+        }
+        .comment {
+            width: 300px;
+            margin: 50px 325px;
+            background-color: bisque;
+            padding: 20px;
+        }
+      
+    </style>
+
+    <title>简单CSS练习(二)</title>
+</head>
+<body>
+    <div class="layout">
+        <div class="box steal">steal</div>
+        <div class="box yellow">yellow</div>
+        <div class="box orange">orange</div>
+        <div class="box red">red</div>
+        <div class="box green">green</div>
+    </div>
+    <div class="comment">
+        <p>注释：写多个box-shadows就是为了效果叠加，元素更加好看，为了有动态效果，还使用了transition</p>
+    </div>
+
+    
+</body>
+</html>
