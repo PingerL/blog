@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .box {
+            width: 0px;
+            height: 0px;
+            border-top: 30px solid blue;
+            border-right: 30px solid yellow;
+            border-bottom: 30px solid green;
+            border-left: 30px solid red;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        .box.v1 {
+            border: 30px solid transparent;
+            border-top: 30px solid blue;
+        }
+        .box.v2 {
+            border: 30px solid transparent;
+            border-left: 30px solid red;
+        }
+        .box.v3 {
+            border: 30px solid transparent;
+            border-right: 30px solid yellow;
+        }
+        .box.v4 {
+            border: 30px solid transparent;
+            border-bottom: 30px solid green;
+        }
+        .box.v5 {
+            border: 20px solid transparent;
+            border-left: 20px solid red;
+            border-bottom: 20px solid red;
+           
+
+        }
+        .box.v6 {
+            border: 20px solid transparent;
+            border-right: 20px solid green;
+            border-bottom: 20px solid green;
+
+        }
+    </style>
+    
+    <title>简单CSS练习(三)</title>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box v1"></div>
+    <div class="box v2"></div>
+    <div class="box v3"></div>
+    <div class="box v4"></div>
+    <div class="box v5"></div>
+    <div class="box v6"></div>
+</body>
+</html>
