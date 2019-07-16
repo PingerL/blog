@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .layout {
+            width: 600px;
+            margin: 0 auto;
+        }
+        .h-navbar {
+            color: black;
+            background-color: #f1f1f1;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+            list-style: none;
+            /* overflow: hidden; */
+            padding: 0;
+            margin: 0;
+        }
+        .h-navbar li {
+            float: left;
+            position: relative;
+        }
+        .h-navbar li a:hover {
+            background-color: #ccc;
+            color: black;
+        }
+        .h-navbar li a {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #000;
+        }
+        .h-navbar:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .more {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+        }
+        /*
+          若按照下面的来写，则得不到hover时显示的效果 why???? 组合选择器该再好好看看了
+         .h-navbar>li:hover .more {display: block;}
+          */
+        .h-navbar li:hover .more {
+            display: block;
+            background-color: #f1f1f1;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+        }
+      
+    </style>
+    <title>导航栏</title>
+</head>
+<body>
+    <div class="layout">
+        <ul class="h-navbar">
+            <li> <a href="#">首页</a> </li>
+            <li> <a href="#">作品</a> </li>
+            <li> 
+                <a href="#" id="abc">更多</a> 
+                <div class="more">
+                    <a href="#">Github</a>
+                    <a href="#">博客</a>
+                    <a href="#">知乎</a>
+                </div>
+            
+            </li>
+        </ul>
+    </div>
+    
+</body>
+</html>
