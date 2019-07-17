@@ -37,6 +37,11 @@
             display: block;
             clear: both;
         }
+        .h-navbar>li:hover .more {
+            display: block;
+            background-color: #f1f1f1;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
+            }
         .more {
             position: absolute;
             top: 100%;
@@ -47,11 +52,11 @@
           若按照下面的来写，则得不到hover时显示的效果 why???? 组合选择器该再好好看看了
          .h-navbar>li:hover .more {display: block;}
           */
-        .h-navbar li:hover .more {
+        /* .h-navbar li:hover .more {
             display: block;
             background-color: #f1f1f1;
             box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15), 0 2px 10px 0 rgba(0, 0, 0, 0.12)!important;
-        }
+        } */
       
     </style>
     <title>导航栏</title>

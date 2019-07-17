@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BFC 风景列表</title>
+    <style type="text/css">
+        ul,li {
+            margin: 0;
+            padding: 0;
+        }
+		.layout {
+			color: #666;
+			width: 800px;
+			margin: 0 auto;
+            text-align: center;
+		}
+        .layout h1 {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 16px;
+        }
+        ul {
+            list-style: none;
+            margin-top: 30px;
+        }
+        .container::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        ul li {
+            text-align: center;
+            width: 260px;
+            float: left;
+            margin-right: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)!important;
+            margin-top: 20px;
+        }
+        ul li:nth-child(3n) {
+            margin-right: 0;
+        }
+        ul li img {
+            width: 100%;
+            opacity: .8;  
+        }
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<h1>风景列表</h1>
+		<ul class="container">
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+			<li> 
+				<img src="images/sp3.png">
+				<p>风景如画</p> 
+			</li>
+		</ul>
+	</div>
+</body>
+</html>
