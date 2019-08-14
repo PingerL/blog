@@ -203,6 +203,7 @@
     // 点击按钮，显示登陆界面
     $("header .login").onclick = function(e){
       // $(".flip-modal").classList.add("show")
+      e.stopPropagation()
       $(".flip-modal").style.display = 'block'
     }
     /*只能为一个按钮注册事件
@@ -221,6 +222,9 @@
       e.onclick = function(){
       $(".flip-modal").style.display = "none"
     }})
+    document.addEventListener('click', function(){
+      $('.flip-modal').style.display = 'none'
+    })
     //为多个按钮注册同一事件
     $(".flip-modal").addEventListener("click",function(e){
       if(e.target.classList.contains("login")){
