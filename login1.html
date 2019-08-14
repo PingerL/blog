@@ -227,6 +227,7 @@
     })
     //为多个按钮注册同一事件
     $(".flip-modal").addEventListener("click",function(e){
+      e.stopPropagation()
       if(e.target.classList.contains("login")){
         $(".flip-modal").classList.remove("register")
         $(".flip-modal").classList.add("login")
