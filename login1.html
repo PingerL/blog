@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1349462_wx5wevjsx4.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    .iconfont {
+      font-size: 18px;
+      color: rgba(0, 0, 0, .8);
+    }
+    html,body, main {
+      /* 一个盒子若想其高度为当前页面的100% ,则需要将html,body和其盒子的高度值先设为100%*/
+      height: 100%;
+    }
+    body {
+      color: #ccc;
+      font: 14px/1.5 Arial;
+    }
+    a {
+      /* a标签不能继承父元素的颜色设置，是因为a标签有自己的默认样式，继承的CSS属性优先级别最低 */
+      text-decoration: none;
+      color: #000;
+    }
+    header {
+      position: absolute;
+      top: 10px;
+      /* width: 100%  设置当前元素的宽度等于父容器的宽度*/
+      width: 100%; 
+    }
+    header .login {
+      /* 使用绝对定位会脱离文档流，若不设置其父容器的高度，则绝对定位的元素撑不开父容器的高度，此时父容器的高度为0 
+         使用float的元素也会造成父容器的高度坍塌，此时父容器要清除浮动,生成BFC可以用来清除浮动，元素生成BFC的方式：
+         1.float属性不为none   2.position为absolute或fixed    3.display为inline-block, table-cell, table-caption, flex, inline-flex
+         4. overflow不为visible。
+      */
+      float: right;
+      margin-right: 20px;
+      top: 0;
+      font-size: 20px;
+    }
+    main {
+      background: linear-gradient(to left top, rgba(255,0, 0,0.78), rgba(0, 0, 255, 0.5)), url(images/bg1.jpg) center center no-repeat;
+      background-size: cover;
+      /* width: 100vw; height: 100vh;  这样写法也可以将整个元素充满整个页面，不用靠继承父容器的高度来*/
+    }
+    .errormsg {
+      color: orange;
+    }
+    .flip-modal {
+      display: none;
+    }
+    .show {
+      display: block!important;
+    }
+    .modal {
+      width: 400px;
+      background-color: rgba(255, 255, 255, .8);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, .2);
+      padding: 16px;
+    }
+    .modal-login .close,
+    .modal-register .close {
+      margin-left: 94%;
+    }
+    .modal-login .tabs,
+    .modal-register .tabs {
+      text-align: center;
+    }
+    .modal-login .tabs a,
+    .modal-register .tabs a {
+      margin: 0 16px;
+      display: inline-block;
+      font-size: 16px;
+    }
+    .modal-login .tabs a.active,
+    .modal-register .tabs a.active {
+      border-bottom: 2px solid #444;
+      color: #444;
+    }
+    .content {
+      padding: 20px 40px;
+    }
+    .content .inputfield {
+      position: relative;
+    }
+    .content input[type=text],
+    .content input[type=password]{
+      width: 100%;
+      outline: none;
+      padding: 10px 10px 10px 32px;
+      margin-top: 10px;
+    }
+    .content input[type=submit]{
+      padding: 6px 10px;
+      border: none;
+      background-color: #fff;
+      outline: none;
+      box-shadow: 0px 0px 2px rgba(0, 0, 0, .4);
+      margin-top: 10px;
+    }
+    .content .inputfield .fa {
+      position: absolute;
+      left: 8px;
+      top: 16px;
+    }
+    .flip-modal.login .modal-login,
+    .flip-modal.register .modal-register{
+      transform: translate(-50%,-50%) rotateY(0deg);
+      backface-visibility: hidden;
+      transition: all 1s;
+    }
+    .flip-modal.login .modal-register,
+    .flip-modal.register .modal-login{
+      transform: translate(-50%,-50%) rotateY(180deg);
+      backface-visibility: hidden;
+      transition: all 1s;
+    }
+    span {
+      font-size: 20px;
+    }
+  </style>
+  <title>Login Page</title>
+</head>
+<body>
+  <header>
+    <!-- 使用绝对定位，定位到页面的右上角   浮动与定位的选择：大布局、自适应用浮动，小元素，固定宽高用定位 -->
+    <a href="#" class="login"><span class="iconfont icon-yonghuming"></span></a>
+  </header>
+  <main>
+    <div class="flip-modal login">
+      <div class="modal-login modal">
+        <a href="#" class="close"><span class="iconfont icon-shanchu"></span></a>
+        <div class="tabs">
+          <a href="#" class="login active">登录</a>
+          <a href="#" class="register">注册</a>
+        </div>
+        <div class="content">
+          <div class="errormsg"></div>
+          <form action="/login1.html" method="POST">
+            <div class="inputfield">
+              <span class="iconfont icon-xingmingyonghumingnicheng fa"></span>
+              <input type="text" name="username" placeholder="用户名">
+            </div>
+            <div class="inputfield">
+              <span class="iconfont icon-mima fa"></span>
+              <input type="password" name="password" placeholder="密码">
+            </div>
+            <div class="inputfield">
+              <input type="submit" value="登录">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="modal-register modal">
+        <a href="#" class="close"><span class="iconfont icon-shanchu"></span></a>
+        <div class="tabs">
+          <a href="#" class="login">登录</a>
+          <a href="#" class="register active">注册</a>
+        </div>
+        <div class="content">
+          <div class="errormsg"></div>
+          <form action="/login1.html" method="POST">
+            <div class="inputfield">
+              <span class="iconfont icon-xingmingyonghumingnicheng fa"></span>
+              <input type="text" name="username" placeholder="请输入用户名">
+            </div>
+            <div class="inputfield">
+              <span class="iconfont icon-mima fa"></span>
+              <input type="password" name="password" placeholder="请输入密码">
+            </div>
+            <div class="inputfield">
+              <span class="iconfont icon-mima fa"></span>
+              <input type="password" name="password2" placeholder="请再次输入密码">
+            </div>
+            <div class="inputfield">
+              <input type="submit" value="注册">
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script>
+    function $(selector){
+      return document.querySelector(selector)
+    }
+    function $$(selector){
+      return document.querySelectorAll(selector)
+    }
+    // 点击按钮，显示登陆界面
+    $("header .login").onclick = function(e){
+      // $(".flip-modal").classList.add("show")
+      $(".flip-modal").style.display = 'block'
+    }
+    /*只能为一个按钮注册事件
+    // 登陆界面和注册界面交换位置
+    $(".modal .login").onclick= function(){
+        $(".flip-modal").classList.remove("register")
+        $(".flip-modal").classList.add("login")
+    }
+    $(".modal .register").onclick= function(){
+        $(".flip-modal").classList.remove("login")
+        $(".flip-modal").classList.add("register")
+    }
+    */
+
+    $$(".close").forEach(function(e){
+      e.onclick = function(){
+      $(".flip-modal").style.display = "none"
+    }})
+    //为多个按钮注册同一事件
+    $(".flip-modal").addEventListener("click",function(e){
+      if(e.target.classList.contains("login")){
+        $(".flip-modal").classList.remove("register")
+        $(".flip-modal").classList.add("login")
+      }
+      if(e.target.classList.contains("register")){
+        $(".flip-modal").classList.add("register")
+        $(".flip-modal").classList.remove("login")
+      }
+    })
+    //登陆表单验证
+    $(".modal-login form").addEventListener("submit",function(e){
+      e.preventDefault() //阻止提交按钮默认跳转
+      if(!/^\w{3,8}$/.test($(".modal-login input[name=username]").value)){
+        $(".modal-login .errormsg").innerText = "用户名需输入3-8个字符，包括字母数字下划线"
+        return false
+      }
+      if(!/^\w{6,10}$/.test($(".modal-login input[name=password]").value)){
+        $(".modal-login .errormsg").innerText = "密码需输入6-10个字符，包括字母数字下划线"
+        return false
+      }
+      this.submit()
+    })
+    //注册表单验证
+    $(".modal-register form").addEventListener("submit",function(e){
+      console.log("注册")
+      e.preventDefault()
+      if(!/^\w{3,8}$/.test($('.modal-register input[name=username]').value)){
+        $(".modal-register .errormsg").innerText = "用户名需输入3-8个字符，包括字母数字下划线"
+        return false
+      }
+      if(/^hunger$|^pinger$/.test($(".modal-register input[name=username]").value)){
+        $(".modal-register .errormsg").innerText = "用户名已存在"    
+        return false    
+      }
+      if(!/^\w{6,10}$/.test($(".modal-register input[name=password]").value)){
+        $(".modal-register .errormsg").innerText = "密码需输入6-10个字符，包括字母数字下划线"
+        return false
+      }
+      if($('.modal-register input[name=password]').value !== $(".modal-register input[name=password2]").value){
+        $(".modal-register .errormsg").innerText = "两次密码输入不一致"
+        return false
+      }
+      this.submit()
+    })
+  </script>
+</body>
+</html>
