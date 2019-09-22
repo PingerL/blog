@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ul{
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: #666;
+        }
+        .clearfix::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        body {
+            font: 12px/150% Arial,Verdana,'\5b8b\4f53';
+            color: #666;
+        }
+        .layout {
+            width: 702px;
+            margin: 20px auto;
+        }
+        .layout h1{
+            margin-bottom: 20px;
+        }
+        .btn{
+            display: inline-block;
+            border: 1px solid #c81623;
+            background-color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        .layout ul li {
+            width: 30%;
+            float: left;
+            position: relative;
+            margin: 10px 10px;
+            padding: 10px;
+        }
+        .prod img{
+            width: 100%;
+        }
+        .cover {
+            position: absolute;
+            background-color: rgba(0,0,0,.3);
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            /* 使用opacity属性只会使元素看不见，实际上还是存在在那个位置，透明度为0，使用这个在透明度为0时也会点击到元素，若元素有绑定事件，则同样会触发事件 */
+            /* opacity: 0; */
+            display: none;
+        }
+        .hover {
+            /* opacity: 1; */
+            display: block;
+        }
+        .cover .btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%)
+            
+        }
+    </style>
+    <title>事件代理</title>
+</head>
+<body>
+    <div class="layout">
+        <h1>珠宝首饰</h1>
+        <ul class="prod-ct clearfix">
+            <li class="prod">
+                <div class="cover"><a href="" class="btn action-delete">删除</a></div>
+                <a href="">
+                    <img src="https://picsum.photos/200/200/?image=1 " alt="">
+                    <div class="prod-name">藏美千金足</div>
+                    <div class="prod-price">¥ 1699.00</div>
+                </a>
+            </li>
+            <li class="prod">
+                <div class="cover"><a href="" class="btn action-delete">删除</a></div>
+                <a href="">
+                    <img src="https://picsum.photos/200/200/?image=2 " alt="">
+                    <div class="prod-name">和田玉</div>
+                    <div class="prod-price">¥ 1699.00</div>
+                </a>
+            </li>
+            <li class="prod">
+                <div class="cover"><a href="" class="btn action-delete">删除</a></div>
+                <a href="">
+                    <img src="https://picsum.photos/200/200/?image=3 " alt="">
+                    <div class="prod-name">路路通吊坠</div>
+                    <div class="prod-price">¥ 1699.00</div>
+                </a>
+            </li>
+        </ul>
+        <a href="#" class="btn btn-add">添加</a>
+        <a href="#" class="btn btn-edit">编辑</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        function getProdHtml(prod){
+            var html = ''
+            html += '<li class="prod">'
+            html += '<div class="cover"><a herf="" class="btn action-delete">删除</a></div>'
+            html += '<a herf="">'
+            html +='<img src="'+prod.img+'" alt="">'
+            html += '<div class="prod-name">'+prod.name+'</div>'
+            html += '<div class="prod-price">'+prod.price+'</div>'
+            html += '</a>'
+            html += '</li>'
+            return html
+        }
+        function getData(){
+            var results = []
+            for(var i = 0; i<3; i++){
+                var rand = Math.floor(Math.random()*100)
+                var product = {
+                    img: 'https://picsum.photos/200/200/?image='+rand,
+                    name: '柯蓝 黄金手',
+                    price: '¥ '+rand*1000 +'.00'
+                }
+                results.push(product)
+            }
+            return results
+        }
+        $('.btn-add').on('click',function(e){
+            $('.cover').removeClass('hover')
+            e.preventDefault()
+            var products = getData()
+            console.log(products)
+            $.each(products,function(idx,prod){
+                var html = getProdHtml(prod)
+                $('.prod-ct').append(html)
+            })
+        })
+        $('.btn-edit').on('click',function(e){
+            e.preventDefault()
+            $('.cover').toggleClass('hover')
+        })
+        $('.prod-ct').on('click','.action-delete',function(e){
+            e.preventDefault()
+            $(this).parents('.prod').remove()
+            console.log('move')
+        })
+    </script>    
+</body>
+</html>
