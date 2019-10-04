@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS实现懒加载</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .contanier {
+            width: 800px;
+            background-color: beige;
+            margin: 0 auto;
+        }
+        img {
+            display: inline-block;
+            margin: 20px 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="contanier">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=1 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=2 " data-src="https://picsum.photos/200/200/?image=2 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=3 " data-src="https://picsum.photos/200/200/?image=3 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=4 " data-src="https://picsum.photos/200/200/?image=4 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=5 " data-src="https://picsum.photos/200/200/?image=5 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=6 " data-src="https://picsum.photos/200/200/?image=6 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=7 " data-src="https://picsum.photos/200/200/?image=7 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=8 " data-src="https://picsum.photos/200/200/?image=8 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=9 " data-src="https://picsum.photos/200/200/?image=9 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=10 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=11 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=12 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1"  data-src="https://picsum.photos/200/200/?image=13 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=14 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=15 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=16 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=17 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=18 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=19 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=20 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=21 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=22 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=23 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=24 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=25 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=26 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=27 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=28 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=29 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=30 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=31 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=32 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=33 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=34 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=35 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=36 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=37 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=38 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=39 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=40 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=41 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=42 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=43 "alt="pthotos">
+        <img src="https://picsum.photos/200/200/?image=1 " data-src="https://picsum.photos/200/200/?image=44 "alt="pthotos">
+    </div>
+    <script>
+       /*
+       核心：img元素的src属性存放统一的图片地址，自定义属性data-src存放真正图片的地址，判断当
+       图片元素出现在可视窗口时，将src的值替换成data-src中的值
+       改进：使用函数节流，在scroll事件的时候减少请求
+       */
+        var imgs = document.querySelectorAll('img')
+        window.addEventListener('scroll',function(){
+            console.log('123')
+            var winH = window.innerHeight, //窗口的高度
+                scrollH = window.scrollY  //窗口滚动的高度
+            for (i in imgs){
+                var imgScrollH=imgs[i].offsetTop //图片距离窗口顶部偏移高度
+                if(imgScrollH < winH + scrollH){
+                    var data_src = imgs[i].getAttribute('data-src')
+                    imgs[i].setAttribute('src',data_src)
+                }
+            }
+        })
+       /* window.onscroll = (function(){
+            // console.log(img)
+            var winH = window.innerHeight,
+                scrollH = window.scrollY
+            for (i in imgs){
+                var imgScrollH=imgs[i].offsetTop
+                if(imgScrollH < winH + scrollH){
+                    var data_src = imgs[i].getAttribute('data-src')
+                    imgs[i].setAttribute('src',data_src)
+                }
+            }
+        }) */
+    </script>
+</body>
+</html>
